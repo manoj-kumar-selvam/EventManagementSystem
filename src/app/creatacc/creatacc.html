@@ -1,0 +1,22 @@
+<div>
+    <form (ngSubmit)="save()" #f="ngForm">
+
+        <div>
+            <label for="username" class="col-form-label-lg">USERNAME</label>
+            <input type="text" name="username" class="form-control-lg" required [(ngModel)]="creact.userName">
+        </div>
+
+        <div>
+            <label for="EMAIL" class="col-form-label-lg">EMAIL</label>
+            <input type="email" name="email" class="form-control-lg" required [(ngModel)]="creact.email">
+        </div>
+        
+        <div>
+            <label for="" class="col-form-label-lg">password</label>
+            <input type="password" name="password" class="form-control-lg" required [(ngModel)]="creact.password">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">CREATE ACCOUNT</button>
+        <a routerLink="/Login">ALREADY HAVE ACCOUNT?</a>     
+    </form>
+</div>

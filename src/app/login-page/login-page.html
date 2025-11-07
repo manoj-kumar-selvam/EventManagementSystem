@@ -1,0 +1,18 @@
+<div>
+    <form (ngSubmit)="save()" #f="ngForm">
+
+        <div>
+            <label for="uname" class="col-form-label-lg">USERNAME</label>
+            <input type="text" name="uname" class="form-control-lg" required [(ngModel)]="login.Username">
+        </div>
+
+      
+        <div>
+            <label for="pass" class="col-form-label-lg">PASSWORD</label>
+            <input type="text" name="pass" class="form-control-lg" required [(ngModel)]="login.Password">
+        </div>
+
+        <button type="submit" [disabled]="f.invalid" class="btn btn-primary">LOGIN</button>
+        <a routerLink="/Createacc">DONT  HAVE ACCOUNT?</a>
+    </form>
+</div>

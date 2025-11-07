@@ -1,0 +1,39 @@
+<div>
+    <form (ngSubmit)="save()" #f="ngForm">
+
+        <div>
+            <label for="" class="col-form-label-lg">FullName</label>
+            <input type="text" name="uname" class="form-control-lg" required [ngModel]="bookobj.FullName">
+        </div>
+
+        <div>
+            <label for="" class="col-form-label-lg">Email</label>
+            <input type="text" name="Email" class="form-control-lg" required [(ngModel)]="bookobj.Email">
+        </div>
+
+        <div>
+            <label for="" class="col-form-label-lg">PhoneNo</label>
+            <input type="tel" name="PhoneNo" class="form-control-lg" required [(ngModel)]="bookobj.PhoneNo">
+        </div>
+
+        <div>
+            <label for="" class="col-form-label-lg">NoOfTickets</label>
+            <input type="number" name="NoOfTickets" class="form-control-lg" required [(ngModel)]="bookobj.NoOfTickets">
+        </div>
+
+        <div>
+            <label class="col-form-label-lg">SeatType</label><br>
+
+            <input type="radio" id="vip" name="seatType" value="VIP" [(ngModel)]="bookobj.SeatType">
+            <label for="vip">VIP</label><br>
+
+            <input type="radio" id="regular" name="seatType" value="Regular"  [(ngModel)]="bookobj.SeatType">
+            <label for="regular">Regular</label><br>
+
+            <input type="radio" id="balcony" name="seatType" value="Balcony"  [(ngModel)]="bookobj.SeatType">
+            <label for="balcony">Balcony</label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">BOOK</button>
+        <button type="reset" class="btn btn-secondary">RESET</button>
+    </form>
+</div>
