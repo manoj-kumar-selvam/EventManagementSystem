@@ -16,15 +16,14 @@ export class LoginPage {
 
   constructor(public eveserv:EventService,public router:Router){}
 
-  // login = new LoginModel("","");
-  login:LoginModel;
+  login = new LoginModel("","");
 
   save()
   {
     this.eveserv.login(this.login).subscribe({
       next:(msg:any)=>{
         alert(msg.message);
-        this.router.navigateByUrl("/Booking")
+        this.router.navigateByUrl("/list")
       },
       error:(msg)=>{
         alert(msg.error.message)

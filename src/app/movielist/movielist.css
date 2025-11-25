@@ -1,0 +1,11 @@
+.smooth-img {
+    width: 150px;
+    transition: all 0.3s ease; 
+    border-radius: 10px;
+}
+
+.smooth-img:hover {
+    background-color: whitesmoke;
+    transform: scale(1.07);    
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}

@@ -1,18 +1,37 @@
-<div>
-    <form (ngSubmit)="save()" #f="ngForm">
+<div class="auth-bg">
+<div class=" container d-flex justify-content-center align-items-center vh-100">
 
-        <div>
-            <label for="uname" class="col-form-label-lg">USERNAME</label>
-            <input type="text" name="uname" class="form-control-lg" required [(ngModel)]="login.Username">
+    <form (ngSubmit)="save()" #f="ngForm" class="p-4 rounded shadow bg-light">
+        <div class="text-center m-3 pt-3 bg-light"> 
+            <h4 class="h4">LOGIN</h4>
+    </div>
+        <div class="mb-3">
+            <label for="uname" class="col-form-label-lg"><b>Username</b></label>
+            <input type="text" name="uname" minlength="4" maxlength="20" class="form-control-lg" required
+                [(ngModel)]="login.Username" #uname="ngModel">
+
+            <div class="text-danger">
+                @if ((uname.invalid && uname.touched )|| uname.dirty ) {
+                @if (uname.hasError('required')) { <span>Enter Name *</span> }
+                @if (uname.hasError('minlength')) { <span>Enter Atleast 4 Letters</span> }
+                @if (uname.hasError('maxlength')) { <span>Not More than 20 Letters</span> }
+                }
+            </div>
         </div>
 
-      
-        <div>
-            <label for="pass" class="col-form-label-lg">PASSWORD</label>
-            <input type="text" name="pass" class="form-control-lg" required [(ngModel)]="login.Password">
+        <div class="mb-3">
+            <label for="pass" class="col-form-label-lg"><b>Password</b></label>
+            <input type="password" name="pass" class="form-control-lg" required [(ngModel)]="login.Password"
+                #upass="ngModel">
+            <div class="text-danger">
+                @if ((upass.invalid && upass.touched )|| upass.dirty ) {
+                @if (upass.hasError('required')) { <span> Password Field Is Required *</span> }
+                }
+            </div>
         </div>
 
-        <button type="submit" [disabled]="f.invalid" class="btn btn-primary">LOGIN</button>
-        <a routerLink="/Createacc">DONT  HAVE ACCOUNT?</a>
+        <button type="submit" [disabled]="f.invalid" class="btn btn-outline-primary w-100">SUBMIT</button>
+        <a routerLink="/Createacc" class="d-block mt-3 text-center"> <b>Dont Have Account?</b> </a>
     </form>
+</div>
 </div>

@@ -2,6 +2,8 @@ import { BookingModel } from '../Modles/booking-model';
 import { Component } from '@angular/core';
 import { EventService } from '../Service/event-service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { routes } from '../app.routes';
 
 @Component({
   selector: 'app-book-event',
@@ -12,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class BookEvent {
 
-  constructor(public eveserv:EventService){}
+  constructor(public eveserv:EventService,public route:Router){}
 
   bookobj = new BookingModel("","",0,0,"")
 
@@ -21,6 +23,7 @@ export class BookEvent {
     this.eveserv.booking(this.bookobj).subscribe({
       next:(res:any)=>{
         alert(res.message)
+        this.route.navigateByUrl("/list");
       },
       error:(error:any)=>{
         alert(error)

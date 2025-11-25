@@ -1,39 +1,85 @@
-<div>
-    <form (ngSubmit)="save()" #f="ngForm">
+<div class="auth-bg">
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="bg-light p-4 rounded shadow" style="width: 100%; max-width: 400px;">
+       
+        <form (ngSubmit)="save()" #f="ngForm">
+            <div class="text-center">
+                <h4>BOOKING</h4>
+            </div>
+            <div class="mb-3">
+                <label for="fullname" class="form-label">FullName</label>
+                <input type="text" id="fullname" name="uname" class="form-control" minlength="4" maxlength="20" required
+                    [ngModel]="bookobj.FullName" #uname="ngModel">
 
-        <div>
-            <label for="" class="col-form-label-lg">FullName</label>
-            <input type="text" name="uname" class="form-control-lg" required [ngModel]="bookobj.FullName">
-        </div>
+                <div class="text-danger mt-1 small">
+                    @if (uname.invalid && (uname.touched||uname.dirty)) {
+                    @if (uname.hasError("required")) { <span>Enter Your Name *</span> }
+                    @if (uname.hasError("minlength")) { <span>Enter Atleast 4 Letters</span> }
+                    @if (uname.hasError("maxlength")) { <span>Not More than 20</span> }
+                    }
+                </div>
+            </div>
 
-        <div>
-            <label for="" class="col-form-label-lg">Email</label>
-            <input type="text" name="Email" class="form-control-lg" required [(ngModel)]="bookobj.Email">
-        </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="Email" class="form-control" required [(ngModel)]="bookobj.Email"
+                    #mail="ngModel">
 
-        <div>
-            <label for="" class="col-form-label-lg">PhoneNo</label>
-            <input type="tel" name="PhoneNo" class="form-control-lg" required [(ngModel)]="bookobj.PhoneNo">
-        </div>
+                <div class="text-danger mt-1 small">
+                    @if (mail.invalid && (mail.touched||mail.dirty)) {
+                    @if (mail.hasError("required")) { <span>Enter MailId *</span> }
+                    }
+                </div>
+            </div>
 
-        <div>
-            <label for="" class="col-form-label-lg">NoOfTickets</label>
-            <input type="number" name="NoOfTickets" class="form-control-lg" required [(ngModel)]="bookobj.NoOfTickets">
-        </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">PhoneNo</label>
+                <input type="tel" id="phone" name="PhoneNo" class="form-control" required [(ngModel)]="bookobj.PhoneNo"
+                    #phn="ngModel" maxlength="10">
 
-        <div>
-            <label class="col-form-label-lg">SeatType</label><br>
+                <div class="text-danger mt-1 small">
+                    @if (phn.invalid && (phn.touched||phn.dirty)) {
+                    @if (phn.hasError("required")) { <span>Enter PhoneNo *</span> }
+                    }
+                </div>
+            </div>
 
-            <input type="radio" id="vip" name="seatType" value="VIP" [(ngModel)]="bookobj.SeatType">
-            <label for="vip">VIP</label><br>
+            <div class="mb-3">
+                <label for="tickets" class="form-label">NoOfTickets</label>
+                <input type="number" id="tickets" name="NoOfTickets" class="form-control" required min="1"
+                    [(ngModel)]="bookobj.NoOfTickets" #boj="ngModel">
 
-            <input type="radio" id="regular" name="seatType" value="Regular"  [(ngModel)]="bookobj.SeatType">
-            <label for="regular">Regular</label><br>
+                <div class="text-danger mt-1 small">
+                    @if (boj.invalid && (boj.touched||boj.dirty)) {
+                    @if (boj.hasError("required")) { <span>Enter NoOfTickets *</span> }
+                    }
+                </div>
+            </div>
 
-            <input type="radio" id="balcony" name="seatType" value="Balcony"  [(ngModel)]="bookobj.SeatType">
-            <label for="balcony">Balcony</label>
-        </div>
-        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">BOOK</button>
-        <button type="reset" class="btn btn-secondary">RESET</button>
-    </form>
+            <div class="mb-3">
+                <label class="form-label">SeatType</label>
+                
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="vip" name="seatType" value="VIP" [(ngModel)]="bookobj.SeatType">
+                    <label class="form-check-label" for="vip">VIP</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="regular" name="seatType" value="Regular" [(ngModel)]="bookobj.SeatType">
+                    <label class="form-check-label" for="regular">Regular</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="balcony" name="seatType" value="Balcony" [(ngModel)]="bookobj.SeatType">
+                    <label class="form-check-label" for="balcony">Balcony</label>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" [disabled]="f.invalid">BOOK</button>
+                <button type="reset" class="btn btn-secondary">RESET</button>
+            </div>
+        </form>
+    </div>
+</div>
 </div>

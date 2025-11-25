@@ -1,22 +1,54 @@
-<div>
-    <form (ngSubmit)="save()" #f="ngForm">
+<div class="auth-bg">
+<div class=" container d-flex justify-content-center align-items-center vh-100">
+    <div class="bg-light p-4 rounded shadow" style="width: 100%; max-width: 400px;">
 
-        <div>
-            <label for="username" class="col-form-label-lg">USERNAME</label>
-            <input type="text" name="username" class="form-control-lg" required [(ngModel)]="creact.userName">
-        </div>
+        <form (ngSubmit)="save()" #f="ngForm" class="">
+            <div class="text-center m-3 pt-3 bg-light">
+                <h4 class="h4">CREATE ACCOUNT</h4>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="col-form-label-lg d-block"><b>Username</b></label>
+                <input type="text" name="username" class="form-control-lg w-100" minlength="4" maxlength="20" required
+                    [(ngModel)]="creact.userName" #uname="ngModel">
 
-        <div>
-            <label for="EMAIL" class="col-form-label-lg">EMAIL</label>
-            <input type="email" name="email" class="form-control-lg" required [(ngModel)]="creact.email">
-        </div>
-        
-        <div>
-            <label for="" class="col-form-label-lg">password</label>
-            <input type="password" name="password" class="form-control-lg" required [(ngModel)]="creact.password">
-        </div>
+                <div class="text-danger mt-1">
+                    @if (uname.invalid && (uname.touched || uname.dirty)) {
+                    @if (uname.hasError('required')) { <p class="mb-0">Enter Your Name *</p> }
+                    @if (uname.hasError('minlength')) { <span class="d-block">Enter Atleast 4 Letters *</span> }
+                    @if (uname.hasError('maxlength')) { <span class="d-block">Not More than 20 Letters *</span> }
+                    }
+                </div>
+            </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">CREATE ACCOUNT</button>
-        <a routerLink="/Login">ALREADY HAVE ACCOUNT?</a>     
-    </form>
+
+            <div class="mb-3">
+                <label for="EMAIL" class="col-form-label-lg d-block"><b>Email</b></label>
+                <input type="email" name="email" class="form-control-lg w-100" required [(ngModel)]="creact.email"
+                    #uemail="ngModel">
+
+                <div class="text-danger mt-1">
+                    @if (uemail.invalid && (uemail.touched || uemail.dirty)) {
+                    @if (uemail.hasError('required')) { <span class="d-block">Enter Your EmailId *</span> }
+                    }
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="password" class="col-form-label-lg d-block"><b>Password</b></label>
+                <input type="password" name="password" class="form-control-lg w-100" required
+                    [(ngModel)]="creact.password" #upass="ngModel">
+
+                <div class="text-danger mt-1">
+                    @if ((upass.invalid && upass.touched) || upass.dirty) {
+                    @if (upass.hasError('required')) { <span class="d-block">Enter Your Password *</span> }
+                    }
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" [disabled]="f.invalid">CREATE ACCOUNT</button>
+            <a routerLink="/Login" class="d-block mt-3 text-center"> <b>ALREADY HAVE ACCOUNT?</b> </a>
+        </form>
+    </div>
+</div>
 </div>

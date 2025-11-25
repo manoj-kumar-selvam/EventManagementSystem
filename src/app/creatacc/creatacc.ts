@@ -17,7 +17,7 @@ export class Creatacc {
 
   constructor(public eveserv: EventService) { }
   save() {
-    debugger
+
     console.log(this.creact);
     this.eveserv.creatacc(this.creact).subscribe({
       next: (res: any) => {
